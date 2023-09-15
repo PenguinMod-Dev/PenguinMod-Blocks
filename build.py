@@ -28,7 +28,7 @@
 # been renamed.  The uncompressed file also allows for a faster developement
 # cycle since there is no need to rebuild or recompile, just reload.
 #
-# This script also generates:
+# This script also generates: 
 #   blocks_compressed.js: The compressed common blocks.
 #   blocks_vertical_compressed.js: The compressed Scratch vertical blocks.
 #   msg/js/<LANG>.js for every language <LANG> defined in msg/js/<LANG>.json.
