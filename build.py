@@ -14,7 +14,7 @@
 # distributed under the License is distributed on an "AS IS" BASIS,
 # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
 # See the License for the specific language governing permissions and
-# limitations under the License.
+# limitations under the License. 
 
 # This script generates two versions of Blockly's core files:
 #   blockly_compressed.js
@@ -28,7 +28,7 @@
 # been renamed.  The uncompressed file also allows for a faster developement
 # cycle since there is no need to rebuild or recompile, just reload.
 #
-# This script also generates: 
+# This script also generates:
 #   blocks_compressed.js: The compressed common blocks.
 #   blocks_vertical_compressed.js: The compressed Scratch vertical blocks.
 #   msg/js/<LANG>.js for every language <LANG> defined in msg/js/<LANG>.json.
