@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/bash 
 
 # Script for cleaning up blockly-specific files when merging blockly into scratch-blocks
 # Removes files and directories that scratch-blocks doesn't want.
