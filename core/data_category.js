@@ -60,9 +60,7 @@ Blockly.DataCategory = function(workspace) {
     Blockly.DataCategory.addShowVariable(xmlList, firstVariable);
     Blockly.DataCategory.addHideVariable(xmlList, firstVariable);
   }
-  var forEachVariable = Boolean(firstVariable) 
-    ? ['VARIABLE', 'variable', firstVariable]
-    : undefined
+  var forEachVariable = firstVariable
 
   // Now add list variables to the flyout
   Blockly.DataCategory.addCreateButton(xmlList, workspace, 'LIST');
@@ -83,9 +81,9 @@ Blockly.DataCategory = function(workspace) {
     Blockly.DataCategory.addInsertAtList(xmlList, firstVariable);
     Blockly.DataCategory.addReplaceItemOfList(xmlList, firstVariable);
     Blockly.DataCategory.addBlock(xmlList, firstVariable, 'data_listforeachitem',
-        'LIST', forEachVariable);
+        'LIST', null, null, forEachVariable, 'VARIABLE');
     Blockly.DataCategory.addBlock(xmlList, firstVariable, 'data_listforeachnum',
-        'LIST', forEachVariable);
+        'LIST', null, null, forEachVariable, 'VARIABLE');
     Blockly.DataCategory.addSep(xmlList);
     Blockly.DataCategory.addItemOfList(xmlList, firstVariable);
     Blockly.DataCategory.addItemNumberOfList(xmlList, firstVariable);
@@ -432,10 +430,11 @@ Blockly.DataCategory.addCreateButton = function(xmlList, workspace, type) {
  *     name and shadow type of a second pair of value tags.
  */
 Blockly.DataCategory.addBlock = function(xmlList, variable, blockType,
-    fieldName, opt_value, opt_secondValue) {
+    fieldName, opt_value, opt_secondValue, opt_secondVar, opt_secondFieldName) {
   if (Blockly.Blocks[blockType]) {
     var firstValueField;
     var secondValueField;
+    var secondVariable;
     if (opt_value) {
       firstValueField = Blockly.DataCategory.createValue(opt_value[0],
           opt_value[1], opt_value[2]);
@@ -444,12 +443,16 @@ Blockly.DataCategory.addBlock = function(xmlList, variable, blockType,
       secondValueField = Blockly.DataCategory.createValue(opt_secondValue[0],
           opt_secondValue[1], opt_secondValue[2]);
     }
+    if (opt_secondVar) {
+      secondValueField = Blockly.Variables.generateVariableFieldXml_(opt_secondVar, 
+          opt_secondFieldName);
+    }
 
     var gap = 8;
     var blockText = '<xml>' +
         '<block type="' + blockType + '" gap="' + gap + '">' +
         Blockly.Variables.generateVariableFieldXml_(variable, fieldName) +
-        firstValueField + secondValueField +
+        firstValueField + secondValueField + secondVariable +
         '</block>' +
         '</xml>';
     var block = Blockly.Xml.textToDom(blockText).firstChild;
