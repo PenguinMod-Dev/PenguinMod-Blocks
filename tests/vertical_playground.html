@@ -335,6 +335,11 @@
         Blockly.Xml.clearWorkspaceAndLoadFromXml(xml, workspace);
         workspace.getFlyout().setRecyclingEnabled(true);
       }
+
+      function deleteAll() {
+        const type = document.getElementById('blockType').value
+        Blockly.removeAllBlocksOfType(workspace, type)
+      }
     </script>
 
     <style>
@@ -620,6 +625,12 @@
       <input type="button" value="Report last clicked block" onclick="reportDemo()" />
       Error:
       <input type="checkbox" id="isError">
+    </p>
+
+    <p>
+      remove block:
+      <input id="blockType" type="text" value="motion_goto" />
+      <input type="button" value="delete all blocks of type" onclick="deleteAll()" />
     </p>
   </body>
 </html>

@@ -523,6 +523,14 @@ Blockly.defineBlocksWithJsonArray = function(jsonArray, ignoreOverites) {
   }
 };
 
+Blockly.removeAllBlocksOfType = function(workspace, type) {
+  var blocks = Object.values(workspace.blockDB_)
+  for (var i = 0; i < blocks.length; i++) {
+    if (blocks[i].type == type)
+      blocks[i].dispose(true)
+  }
+}
+
 /**
  * Bind an event to a function call.  When calling the function, verifies that
  * it belongs to the touch stream that is currently being processed, and splits
