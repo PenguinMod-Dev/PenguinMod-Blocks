@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - develop
+
 jobs:
   rebuild:
     concurrency: ci-${{ github.ref }} # Recommended if you intend to make multiple deployments in quick succession.
