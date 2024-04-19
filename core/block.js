@@ -1530,7 +1530,7 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
       } catch (err) {}
     }
     connection.connect(newBlock.outputConnection)
-    newBlock.render()
+    newBlock.render(false)
     Blockly.Events.enable()
   }
   var input = new Blockly.Input(type, name, this, connection);
