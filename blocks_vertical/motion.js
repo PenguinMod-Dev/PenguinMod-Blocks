@@ -39,7 +39,12 @@ Blockly.Blocks['motion_movesteps'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "STEPS"
+          "name": "STEPS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -59,7 +64,12 @@ Blockly.Blocks['motion_movebacksteps'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "STEPS"
+          "name": "STEPS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -87,7 +97,12 @@ Blockly.Blocks['motion_moveupdownsteps'] = {
         },
         {
           "type": "input_value",
-          "name": "STEPS"
+          "name": "STEPS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -113,7 +128,12 @@ Blockly.Blocks['motion_turnright'] = {
         },
         {
           "type": "input_value",
-          "name": "DEGREES"
+          "name": "DEGREES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 15
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -139,7 +159,12 @@ Blockly.Blocks['motion_turnleft'] = {
         },
         {
           "type": "input_value",
-          "name": "DEGREES"
+          "name": "DEGREES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 15
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -165,15 +190,30 @@ Blockly.Blocks['motion_turnrightaroundxy'] = {
         },
         {
           "type": "input_value",
-          "name": "DEGREES"
+          "name": "DEGREES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 15
+          }
         },
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -199,15 +239,30 @@ Blockly.Blocks['motion_turnleftaroundxy'] = {
         },
         {
           "type": "input_value",
-          "name": "DEGREES"
+          "name": "DEGREES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 15
+          }
         },
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -227,7 +282,12 @@ Blockly.Blocks['motion_pointindirection'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DIRECTION"
+          "name": "DIRECTION",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 90
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -301,11 +361,21 @@ Blockly.Blocks['motion_pointtowardsxy'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -325,7 +395,11 @@ Blockly.Blocks['motion_pointtowards'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "TOWARDS"
+          "name": "TOWARDS",
+          "defaultBlock": {
+            "type": "motion_pointtowards_menu",
+            "fieldName": "TOWARDS"
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -371,11 +445,21 @@ Blockly.Blocks['motion_gotoxy'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -395,7 +479,11 @@ Blockly.Blocks['motion_goto'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "TO"
+          "name": "TO",
+          "defaultBlock": {
+            "type": "motion_goto_menu",
+            "fieldName": "TO"
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -415,15 +503,30 @@ Blockly.Blocks['motion_glidesecstoxy'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "SECS"
+          "name": "SECS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         },
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -443,7 +546,12 @@ Blockly.Blocks['motion_glidedirectionstepsinseconds'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "STEPS"
+          "name": "STEPS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         },
         {
           "type": "field_dropdown",
@@ -457,7 +565,12 @@ Blockly.Blocks['motion_glidedirectionstepsinseconds'] = {
         },
         {
           "type": "input_value",
-          "name": "SECS"
+          "name": "SECS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         },
       ],
       "category": Blockly.Categories.motion,
@@ -503,11 +616,20 @@ Blockly.Blocks['motion_glideto'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "SECS"
+          "name": "SECS",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         },
         {
           "type": "input_value",
-          "name": "TO"
+          "name": "TO",
+          "defaultBlock": {
+            "type": "motion_gildeto_menu",
+            "fieldName": "TO"
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -527,11 +649,21 @@ Blockly.Blocks['motion_changebyxy'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DX"
+          "name": "DX",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         },
         {
           "type": "input_value",
-          "name": "DY"
+          "name": "DY",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -551,7 +683,12 @@ Blockly.Blocks['motion_changexby'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DX"
+          "name": "DX",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -571,7 +708,12 @@ Blockly.Blocks['motion_setx'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -591,7 +733,12 @@ Blockly.Blocks['motion_changeyby'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DY"
+          "name": "DY",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -611,7 +758,12 @@ Blockly.Blocks['motion_sety'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -645,7 +797,11 @@ Blockly.Blocks['motion_ifonspritebounce'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "SPRITE"
+          "name": "SPRITE",
+          "defaultBlock": {
+            "type": "motion_goto_menu",
+            "fieldName": "TO"
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -665,11 +821,21 @@ Blockly.Blocks['motion_ifonxybounce'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "X"
+          "name": "X",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         },
         {
           "type": "input_value",
-          "name": "Y"
+          "name": "Y",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 0
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -763,7 +929,12 @@ Blockly.Blocks['motion_scroll_right'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DISTANCE"
+          "name": "DISTANCE",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,
@@ -785,7 +956,12 @@ Blockly.Blocks['motion_scroll_up'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DISTANCE"
+          "name": "DISTANCE",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.motion,

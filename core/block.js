@@ -1222,8 +1222,8 @@ Blockly.Block.prototype.toString = function(opt_maxLength, opt_emptyToken) {
  *     input again.  Should be unique to this block.
  * @return {!Blockly.Input} The input object created.
  */
-Blockly.Block.prototype.appendValueInput = function(name) {
-  return this.appendInput_(Blockly.INPUT_VALUE, name);
+Blockly.Block.prototype.appendValueInput = function(name, opt_defaultBlock) {
+  return this.appendInput_(Blockly.INPUT_VALUE, name, opt_defaultBlock);
 };
 
 /**
@@ -1461,7 +1461,7 @@ Blockly.Block.prototype.interpolate_ = function(message, args, lastDummyAlign) {
         } else {
           switch (element['type']) {
             case 'input_value':
-              input = this.appendValueInput(element['name']);
+              input = this.appendValueInput(element['name'], element['defaultBlock']);
               break;
             case 'input_statement':
               input = this.appendStatementInput(element['name']);
@@ -1514,10 +1514,22 @@ Blockly.Block.prototype.interpolate_ = function(message, args, lastDummyAlign) {
  * @return {!Blockly.Input} The input object created.
  * @protected
  */
-Blockly.Block.prototype.appendInput_ = function(type, name) {
+Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
   var connection = null;
   if (type == Blockly.INPUT_VALUE || type == Blockly.NEXT_STATEMENT) {
     connection = this.makeConnection_(type);
+  }
+  if (opt_defaultBlock && connection) {
+    var newBlock = this.workspace.newBlock(opt_defaultBlock.type)
+    newBlock.setShadow(true)
+    newBlock.initSvg()
+    if (typeof opt_defaultBlock.value !== 'undefined') {
+      try {
+        newBlock.setFieldValue(opt_defaultBlock.value, opt_defaultBlock.fieldName)
+      } catch (err) {}
+    }
+    newBlock.outputConnection.connect(connection)
+    newBlock.render()
   }
   var input = new Blockly.Input(type, name, this, connection);
   // Append input to list.

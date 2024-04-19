@@ -79,7 +79,12 @@ Blockly.Blocks['control_repeat'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "TIMES"
+          "name": "TIMES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "args1": [
@@ -120,7 +125,12 @@ Blockly.Blocks['control_repeatForSeconds'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "TIMES"
+          "name": "TIMES",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         }
       ],
       "args1": [
@@ -215,6 +225,74 @@ Blockly.Blocks['control_if_else'] = {
   }
 };
 
+
+Blockly.Blocks['control_try_catch'] = {
+  /**
+   * Block for try-catch.
+   * @this Blockly.Block
+   */
+  init: function () {
+    this.jsonInit({
+      "type": "control_try_catch",
+      "message0": "try to do",
+      "message1": "%1",
+      "message2": "if a block errors",
+      "message3": "%1",
+      "args1": [
+        {
+          "type": "input_statement",
+          "check": 'normal',
+          "name": "SUBSTACK"
+        }
+      ],
+      "args3": [
+        {
+          "type": "input_statement",
+          "check": 'normal',
+          "name": "SUBSTACK2"
+        }
+      ],
+      "category": Blockly.Categories.control,
+      "extensions": ["colours_control", "shape_statement"]
+    });
+  }
+};
+
+Blockly.Blocks['control_throw_error'] = {
+  init: function () {
+    this.jsonInit({
+      "message0": 'throw error %1',
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "ERROR",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": "Hello!"
+          }
+        }
+      ],
+      "category": Blockly.Categories.control,
+      "extensions": ["colours_control", "shape_end"]
+    });
+  }
+};
+
+Blockly.Blocks['control_error'] = {
+  /**
+   * pm: Block to get a try catch error.
+   * @this Blockly.Block
+   */
+  init: function () {
+    this.jsonInit({
+      "message0": "error",
+      "category": Blockly.Categories.control,
+      "extensions": ["colours_control", "output_string"]
+    });
+  }
+};
+
 Blockly.Blocks['control_stop'] = {
   /**
    * Block for stop all scripts.
@@ -282,7 +360,12 @@ Blockly.Blocks['control_wait'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DURATION"
+          "name": "DURATION",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -303,7 +386,12 @@ Blockly.Blocks['control_waitsecondsoruntil'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "DURATION"
+          "name": "DURATION",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 1
+          }
         },
         {
           "type": "input_value",
@@ -452,7 +540,12 @@ Blockly.Blocks['control_for_each'] = {
         },
         {
           "type": "input_value",
-          "name": "VALUE"
+          "name": "VALUE",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "args1": [
@@ -519,7 +612,11 @@ Blockly.Blocks['control_create_clone_of'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "CLONE_OPTION"
+          "name": "CLONE_OPTION",
+          "defaultBlock": {
+            "type": "control_create_clone_of_menu",
+            "fieldName": "CLONE_OPTION"
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -540,7 +637,11 @@ Blockly.Blocks['control_delete_clones_of'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "CLONE_OPTION"
+          "name": "CLONE_OPTION",
+          "defaultBlock": {
+            "type": "control_create_clone_of_menu",
+            "fieldName": "CLONE_OPTION"
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -599,7 +700,11 @@ Blockly.Blocks['control_stop_sprite'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "STOP_OPTION"
+          "name": "STOP_OPTION",
+          "defaultBlock": {
+            "type": "control_stop_sprite_menu",
+            "fieldName": "STOP_OPTION"
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -638,7 +743,11 @@ Blockly.Blocks['control_run_as_sprite'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "RUN_AS_OPTION"
+          "name": "RUN_AS_OPTION",
+          "defaultBlock": {
+            "type": "control_run_as_sprite_menu",
+            "fieldName": "RUN_AS_OPTION"
+          }
         }
       ],
       "args1": [
@@ -732,7 +841,12 @@ Blockly.Blocks['control_set_counter'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "VALUE"
+          "name": "VALUE",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -837,11 +951,21 @@ Blockly.Blocks["control_if_return_else_return"] = {
         },
         {
           "type": "input_value",
-          "name": "TEXT1"
+          "name": "TEXT1",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": "foo"
+          }
         },
         {
           "type": "input_value",
-          "name": "TEXT2"
+          "name": "TEXT2",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": "bar"
+          }
         }
       ],
       "category": Blockly.Categories.control,
@@ -915,7 +1039,12 @@ Blockly.Blocks['control_case'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "CONDITION"
+          "name": "CONDITION",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": "ello"
+          }
         }
       ],
       "args1": [
@@ -938,7 +1067,12 @@ Blockly.Blocks['control_case_next'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "CONDITION"
+          "name": "CONDITION",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": "ello"
+          }
         }
       ],
       "category": Blockly.Categories.control,
