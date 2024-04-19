@@ -1520,6 +1520,7 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
     connection = this.makeConnection_(type);
   }
   if (opt_defaultBlock && connection) {
+    Blockly.Events.disable()
     var newBlock = this.workspace.newBlock(opt_defaultBlock.type)
     newBlock.setShadow(true)
     newBlock.initSvg()
@@ -1528,8 +1529,9 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
         newBlock.setFieldValue(opt_defaultBlock.value, opt_defaultBlock.fieldName)
       } catch (err) {}
     }
-    newBlock.outputConnection.connect(connection)
+    connection.connect(newBlock.outputConnection)
     newBlock.render()
+    Blockly.Events.enable()
   }
   var input = new Blockly.Input(type, name, this, connection);
   // Append input to list.
