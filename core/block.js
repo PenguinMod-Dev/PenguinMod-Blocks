@@ -1535,7 +1535,7 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
     if (!newBlock.outputConnection || connection.targetConnection !== newBlock.outputConnection) {
       console.error('failed connect block of type "' + opt_defaultBlock.type + '" to input "' + name + '"')
       newBlock.dispose()
-    } else newBlock.render(false)
+    }
     Blockly.Events.enable()
   }
   var input = new Blockly.Input(type, name, this, connection);
