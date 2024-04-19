@@ -627,7 +627,7 @@ Blockly.Blocks['motion_glideto'] = {
           "type": "input_value",
           "name": "TO",
           "defaultBlock": {
-            "type": "motion_gildeto_menu",
+            "type": "motion_glideto_menu",
             "fieldName": "TO"
           }
         }
