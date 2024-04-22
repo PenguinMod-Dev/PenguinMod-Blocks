@@ -1533,14 +1533,17 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
         newBlock.setFieldValue(opt_defaultBlock.value, opt_defaultBlock.fieldName)
       } catch (err) {}
     }
+    Blockly.Events.enable()
     try {
+      if (Blockly.Events.isEnabled()) {
+        Blockly.Events.fire(new Blockly.Events.BlockCreate(newBlock));
+      }
       connection.connect(newBlock.outputConnection)
     } catch (err) {}
     if (!newBlock.outputConnection || connection.targetConnection !== newBlock.outputConnection) {
       console.error('failed connect block of type "' + opt_defaultBlock.type + '" to input "' + name + '"')
       newBlock.dispose()
     }
-    Blockly.Events.enable()
   }
   return input;
 };
