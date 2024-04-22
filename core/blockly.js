@@ -522,6 +522,7 @@ Blockly.defineBlocksWithJsonArray = function(jsonArray, ignoreOverites) {
     }
   }
 };
+Blockly.generateCategoryXmlFromJSON_ = function(json) {}
 
 Blockly.removeAllBlocksOfType = function(workspace, type) {
   var blocks = Object.values(workspace.blockDB_)
