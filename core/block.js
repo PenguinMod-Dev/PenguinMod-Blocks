@@ -1524,12 +1524,14 @@ Blockly.Block.prototype.appendInput_ = function(type, name, opt_defaultBlock) {
   this.inputList.push(input);
   if (opt_defaultBlock && connection) {
     var blockText = '<xml>' +
-      '<shadow type="' + goog.string.htmlEscape(opt_defaultBlock.type) + '">' +
+      '<shadow type="' + goog.string.htmlEscape(opt_defaultBlock.type) + '">'
+    if (typeof opt_defaultBlock.value !== 'undefined')
+      blockText +=
         '<fields name="' + goog.string.htmlEscape(opt_defaultBlock.fieldName) + '">' + 
           goog.string.htmlEscape(opt_defaultBlock.value) + 
-        '</field>' +
-      '</shadow>' +
-    '</xml>'
+        '</field>'
+    
+    blockText += '</shadow></xml>'
     var blockDom = Blockly.Xml.textToDom(blockText).firstChild
     connection.setShadowDom(blockDom)
     connection.respawnShadow_()
