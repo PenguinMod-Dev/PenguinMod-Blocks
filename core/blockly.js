@@ -519,6 +519,7 @@ Blockly.defineBlocksWithJsonArray = function(jsonArray, ignoreOverites) {
     }
   }
 };
+Blockly.generateCategoryXmlFromJSON_ = function(json) {}
 
 /**
  * Bind an event to a function call.  When calling the function, verifies that

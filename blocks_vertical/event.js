@@ -212,7 +212,12 @@ Blockly.Blocks['event_whengreaterthan'] = {
         },
         {
           "type": "input_value",
-          "name": "VALUE"
+          "name": "VALUE",
+          "defaultBlock": {
+            "type": "math_number",
+            "fieldName": "NUM",
+            "value": 10
+          }
         }
       ],
       "category": Blockly.Categories.event,
@@ -257,7 +262,11 @@ Blockly.Blocks['event_broadcast'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "BROADCAST_INPUT"
+          "name": "BROADCAST_INPUT",
+          "defaultBlock": {
+            "type": "event_broadcast_menu",
+            "fieldName": "BROADCAST_OPTION"
+          }
         }
       ],
       "category": Blockly.Categories.event,
@@ -277,7 +286,11 @@ Blockly.Blocks['event_broadcastandwait'] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "BROADCAST_INPUT"
+          "name": "BROADCAST_INPUT",
+          "defaultBlock": {
+            "type": "event_broadcast_menu",
+            "fieldName": "BROADCAST_OPTION"
+          }
         }
       ],
       "category": Blockly.Categories.event,
@@ -479,7 +492,12 @@ Blockly.Blocks["event_whenjavascript"] = {
       "args0": [
         {
           "type": "input_value",
-          "name": "JS"
+          "name": "JS",
+          "defaultBlock": {
+            "type": "text",
+            "fieldName": "TEXT",
+            "value": ""
+          }
         }
       ],
       "category": Blockly.Categories.event,
