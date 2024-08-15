@@ -37,6 +37,13 @@ Blockly.Blocks.defaultToolbox = '<xml id="toolbox-categories" style="display: no
         '</shadow>' +
       '</value>' +
     '</block>' +
+    '<block type="motion_movesteps" id="motion_movesteps">' +
+      '<value name="STEPS">' +
+        '<shadow type="math_number">' +
+          '<field name="NUM">10</field>' +
+        '</shadow>' +
+      '</value>' +
+    '</block>' +
     '<block type="motion_turnright" id="motion_turnright">' +
       '<value name="DEGREES">' +
         '<shadow type="math_number">' +
@@ -194,6 +201,7 @@ Blockly.Blocks.defaultToolbox = '<xml id="toolbox-categories" style="display: no
       '</value>' +
     '</block>' +
     '<block type="looks_gotofrontback" id="looks_gotofrontback"></block>' +
+    '<block type="looks_goTargetLayer" id="looks_goTargetLayer"></block>' +
     '<block type="looks_goforwardbackwardlayers" id="looks_goforwardbackwardlayers">' +
       '<value name="NUM">' +
         '<shadow type="math_integer">' +
@@ -541,7 +549,9 @@ Blockly.Blocks.defaultToolbox = '<xml id="toolbox-categories" style="display: no
     '<block type="extension_wedo_motor" id="extension_wedo_motor"></block>' +
     '<block type="extension_wedo_hat" id="extension_wedo_hat"></block>' +
     '<block type="extension_wedo_boolean" id="extension_wedo_boolean"></block>' +
-    '<block type="control_fieldbutton" id="extension_wedo_boolean"></block>' +
+  '<block type="control_fieldbutton" id="control_fieldbutton"></block>' +
+  '<block type="control_fieldcheckboxoriginal" id="control_fieldcheckboxoriginal"></block>' +
+  '<block type="motion_mutatorCheckboxTest" id="motion_mutatorCheckboxTest"></block>' +
     '<block type="operators_expandablejoininputs" id="extension_wedo_boolean"></block>' +
     '<block type="extension_wedo_tilt_reporter" id="extension_wedo_reporter">' +
       '<value name="TILT">' +

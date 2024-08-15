@@ -783,7 +783,8 @@ Blockly.Blocks['sensing_current'] = {
             [Blockly.Msg.SENSING_CURRENT_DAYOFWEEK, 'DAYOFWEEK'],
             [Blockly.Msg.SENSING_CURRENT_HOUR, 'HOUR'],
             [Blockly.Msg.SENSING_CURRENT_MINUTE, 'MINUTE'],
-            [Blockly.Msg.SENSING_CURRENT_SECOND, 'SECOND']
+            [Blockly.Msg.SENSING_CURRENT_SECOND, 'SECOND'],
+            ['js timestamp', 'TIMESTAMP']
           ]
         }
       ],
@@ -819,6 +820,20 @@ Blockly.Blocks['sensing_username'] = {
       "category": Blockly.Categories.sensing,
       "checkboxInFlyout": true,
       "extensions": ["colours_sensing", "output_number"]
+    });
+  }
+};
+
+Blockly.Blocks['sensing_loggedin'] = {
+  /**
+   * Block to report user's username
+   * @this Blockly.Block
+   */
+  init: function () {
+    this.jsonInit({
+      "message0": 'logged in?',
+      "category": Blockly.Categories.sensing,
+      "extensions": ["colours_sensing", "output_boolean"]
     });
   }
 };

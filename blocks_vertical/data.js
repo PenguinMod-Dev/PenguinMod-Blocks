@@ -301,6 +301,31 @@ Blockly.Blocks['data_deletealloflist'] = {
   }
 };
 
+Blockly.Blocks['data_shiftlist'] = {
+  /**
+   * Block to delete all items from list.
+   * @this Blockly.Block
+   */
+  init: function() {
+    this.jsonInit({
+      "message0": "shift %1 by %2",
+      "args0": [
+        {
+          "type": "field_variable",
+          "name": "LIST",
+          "variableTypes": [Blockly.LIST_VARIABLE_TYPE]
+        },
+        {
+          "type": "input_value",
+          "name": "INDEX"
+        }
+      ],
+      "category": Blockly.Categories.dataLists,
+      "extensions": ["colours_data_lists", "shape_statement"]
+    });
+  }
+};
+
 Blockly.Blocks['data_insertatlist'] = {
   /**
    * Block to insert item to list.
@@ -577,6 +602,81 @@ Blockly.Blocks['data_listarray'] = {
   }
 };
 
+Blockly.Blocks['data_amountinlist'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": 'amount of %1 in %2',
+      "args0": [
+        {
+          "type": "input_value",
+          "name": "VALUE"
+        },
+        {
+          "type": "field_variable",
+          "name": "LIST",
+          "variableTypes": [Blockly.LIST_VARIABLE_TYPE]
+        }
+      ],
+      "category": Blockly.Categories.dataLists,
+      "extensions": ["colours_data_lists", "output_number"]
+    });
+  }
+};
+
+Blockly.Blocks['data_filterlistitem'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": 'item',
+      "args0": [],
+      "category": Blockly.Categories.dataLists,
+      "extensions": ["colours_data_lists", "output_string"],
+      "canDragDuplicate": true
+    });
+  }
+};
+
+Blockly.Blocks['data_filterlistindex'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": 'index',
+      "args0": [],
+      "category": Blockly.Categories.dataLists,
+      "extensions": ["colours_data_lists", "output_string"],
+      "canDragDuplicate": true
+    });
+  }
+};
+
+Blockly.Blocks['data_filterlist'] = {
+  init: function() {
+    this.jsonInit({
+      "message0": 'filter %1 by %2 %3 %4',
+      "args0": [
+        {
+          "type": "field_variable",
+          "name": "LIST",
+          "variableTypes": [Blockly.LIST_VARIABLE_TYPE]
+        },
+        {
+          "type": "input_value",
+          "name": "INDEX"
+        },
+        {
+          "type": "input_value",
+          "name": "ITEM"
+        },
+        {
+          "type": "input_value",
+          "name": "BOOL",
+          "check": "Boolean"
+        }
+      ],
+      "category": Blockly.Categories.dataLists,
+      "extensions": ["colours_data_lists", "shape_statement"]
+    });
+  }
+};
+
 Blockly.Blocks['data_arraylist'] = {
   init: function() {
     this.jsonInit({
@@ -679,6 +779,65 @@ Blockly.Blocks['data_listforeachitem'] = {
     });
   }
 };
+
+/**
+ * Mixin to add a context menu for any variable getter blocks defined by a extension block.  
+ * It adds one item for each variable defined on the workspace.
+ * @mixin
+ * @augments Blockly.Block
+ * @package
+ * @readonly
+ */
+Blockly.Constants.Data.EXTENSION_VARIABLE_GETTER_MENU = {
+  /**
+   * Add context menu option to change the selected variable.
+   * @param {!Array} options List of menu options to add to.
+   * @this Blockly.Block
+   */
+  customContextMenu: function(options) {
+    var varField = this.inputList[0].fieldRow[0];
+    if (this.isCollapsed()) {
+      return;
+    }
+    var currentVarName = varField.text_;
+    if (!this.isInFlyout) {
+      var variablesList = this.workspace.getVariablesOfType(varField.variable_.type);
+      variablesList.sort(function(a, b) {
+        return Blockly.scratchBlocksUtils.compareStrings(a.name, b.name);
+      });
+      for (var i = 0; i < variablesList.length; i++) {
+        var varName = variablesList[i].name;
+        if (varName == currentVarName) continue;
+
+        var option = {enabled: true};
+        option.text = varName;
+
+        option.callback =
+            Blockly.Constants.Data.VARIABLE_OPTION_CALLBACK_FACTORY(this,
+                variablesList[i].getId(), varField.name);
+        options.push(option);
+      }
+    } else {
+      var renameOption = {
+        text: Blockly.Msg.RENAME_VARIABLE,
+        enabled: true,
+        callback: Blockly.Constants.Data.RENAME_OPTION_CALLBACK_FACTORY(this,
+            varField.name)
+      };
+      var deleteOption = {
+        text: Blockly.Msg.DELETE_VARIABLE.replace('%1', currentVarName),
+        enabled: true,
+        callback: Blockly.Constants.Data.DELETE_OPTION_CALLBACK_FACTORY(this,
+            varField.name)
+      };
+      options.push(renameOption);
+      options.push(deleteOption);
+    }
+  }
+};
+
+Blockly.Extensions.registerMixin('contextMenu_getVariableBlockAnyType',
+    Blockly.Constants.Data.EXTENSION_VARIABLE_GETTER_MENU);
 
 /**
  * Mixin to add a context menu for a data_variable block.  It adds one item for

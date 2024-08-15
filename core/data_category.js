@@ -63,7 +63,7 @@ Blockly.VariableCategory = function(workspace) {
   }
 
   if (variableModelList.length > 0) {
-    xmlList[xmlList.length - 1].setAttribute('gap', 24);
+    xmlList[xmlList.length - 1].setAttribute('gap', 28);
     var firstVariable = variableModelList[0];
 
     Blockly.VariableCategory.addSetVariableTo(xmlList, firstVariable);
@@ -84,26 +84,28 @@ Blockly.VariableCategory.ListCategory = function(workspace) {
 
   Blockly.VariableCategory.addCreateButton(xmlList, workspace, 'LIST');
   if (globalVars.length > 0) {
-    Blockly.VariableCategory.addLabel(xmlList, "Public Lists")
+    Blockly.VariableCategory.addLabel(xmlList, "Lists for all sprites")
     for (var i = 0; i < globalVars.length; i++) {
       Blockly.VariableCategory.addDataList(xmlList, globalVars[i]);
     }
   }
-  if (localVars.length > 0) { 
-    Blockly.VariableCategory.addLabel(xmlList, "Private Lists")
+  if (localVars.length > 0) {
+    Blockly.VariableCategory.addLabel(xmlList, "Lists for this sprite")
     for (var i = 0; i < localVars.length; i++) {
       Blockly.VariableCategory.addDataList(xmlList, localVars[i]);
     }
   }
 
   if (variableModelList.length > 0) {
-    xmlList[xmlList.length - 1].setAttribute('gap', 24);
+    xmlList[xmlList.length - 1].setAttribute('gap', 28);
     var firstList = variableModelList[0];
 
     Blockly.VariableCategory.addAddToList(xmlList, firstList);
     Blockly.VariableCategory.addSep(xmlList);
     Blockly.VariableCategory.addDeleteOfList(xmlList, firstList);
     Blockly.VariableCategory.addDeleteAllOfList(xmlList, firstList);
+    Blockly.VariableCategory.addBlock(xmlList, firstList, 'data_shiftlist', 'LIST',
+        ['INDEX', 'math_integer', 1]);
     Blockly.VariableCategory.addInsertAtList(xmlList, firstList);
     Blockly.VariableCategory.addReplaceItemOfList(xmlList, firstList);
     Blockly.VariableCategory.addBlock(xmlList, firstList, 'data_listforeachitem', 'LIST');
@@ -111,6 +113,8 @@ Blockly.VariableCategory.ListCategory = function(workspace) {
     Blockly.VariableCategory.addSep(xmlList);
     Blockly.VariableCategory.addItemOfList(xmlList, firstList);
     Blockly.VariableCategory.addItemNumberOfList(xmlList, firstList);
+    Blockly.VariableCategory.addBlock(xmlList, firstList, 'data_amountinlist',
+        'LIST', ['VALUE', 'text', "foo"]);
     Blockly.VariableCategory.addLengthOfList(xmlList, firstList);
     Blockly.VariableCategory.addListContainsItem(xmlList, firstList);
     Blockly.VariableCategory.addBlock(xmlList, firstList, 'data_itemexistslist', 'LIST', 
@@ -473,7 +477,7 @@ Blockly.VariableCategory.addBlock = function(xmlList, variable, blockType,
           opt_secondValue[1], opt_secondValue[2]);
     }
 
-    var gap = 8;
+    var gap = 10;
     var blockText = '<xml>' +
         '<block type="' + blockType + '" gap="' + gap + '">' +
         Blockly.Variables.generateVariableFieldXml_(variable, fieldName) +
